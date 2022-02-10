@@ -1,0 +1,14 @@
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\bin\Debug\net5.0\SolarCoffee.Test.deps.json
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\bin\Debug\net5.0\SolarCoffee.Test.runtimeconfig.json
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\bin\Debug\net5.0\SolarCoffee.Test.runtimeconfig.dev.json
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\bin\Debug\net5.0\SolarCoffee.Test.dll
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\bin\Debug\net5.0\ref\SolarCoffee.Test.dll
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\bin\Debug\net5.0\SolarCoffee.Test.pdb
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.AssemblyInfoInputs.cache
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.AssemblyInfo.cs
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.csproj.CoreCompileInputs.cache
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.dll
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\ref\SolarCoffee.Test.dll
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.pdb
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Test\SolarCoffee.Test\obj\Debug\net5.0\SolarCoffee.Test.genruntimeconfig.cache

@@ -4,12 +4,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarCoffee.WebAPI", "WebAPI\SolarCoffee.WebAPI.csproj", "{7222B176-A255-44B8-8C72-8D91B761396C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C9CCCABE-3E50-4D53-A042-7062258574BA} = {C9CCCABE-3E50-4D53-A042-7062258574BA}
+		{3F40FDC1-E166-4371-880C-A9A3FFE1DB99} = {3F40FDC1-E166-4371-880C-A9A3FFE1DB99}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarCoffee.Data", "..\..\SolarCoffee.Data\SolarCoffee.Data\SolarCoffee.Data.csproj", "{31415E81-CDF8-455B-A062-416D40683D3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarCoffee.Services", "..\..\SolarCoffee.Services\SolarCoffee.Services\SolarCoffee.Services.csproj", "{3F40FDC1-E166-4371-880C-A9A3FFE1DB99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarCoffee.Test", "..\..\SolarCoffee.Test\SolarCoffee.Test\SolarCoffee.Test.csproj", "{C9CCCABE-3E50-4D53-A042-7062258574BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4069416-7F75-42EA-A7AD-1897D50C30E7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\SolarCoffee.Data\SolarCoffee.Data\SolarDbContext.cs = ..\..\SolarCoffee.Data\SolarCoffee.Data\SolarDbContext.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
