@@ -69,3 +69,5 @@ C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Web\SolarCoffee\WebAPI\obj
 C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Web\SolarCoffee\WebAPI\obj\Debug\net5.0\ref\SolarCoffee.WebAPI.dll
 C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Web\SolarCoffee\WebAPI\obj\Debug\net5.0\SolarCoffee.WebAPI.pdb
 C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Web\SolarCoffee\WebAPI\obj\Debug\net5.0\SolarCoffee.WebAPI.genruntimeconfig.cache
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Web\SolarCoffee\WebAPI\bin\Debug\net5.0\SolarCoffee.Services.dll
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Web\SolarCoffee\WebAPI\bin\Debug\net5.0\SolarCoffee.Services.pdb

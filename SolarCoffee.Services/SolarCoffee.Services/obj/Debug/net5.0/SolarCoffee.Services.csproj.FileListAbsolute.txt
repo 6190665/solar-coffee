@@ -13,3 +13,6 @@ C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Servi
 C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Services\obj\Debug\net5.0\ref\SolarCoffee.Services.dll
 C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Services\obj\Debug\net5.0\SolarCoffee.Services.pdb
 C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Services\obj\Debug\net5.0\SolarCoffee.Services.genruntimeconfig.cache
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Services\bin\Debug\net5.0\SolarCoffee.Data.dll
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Services\bin\Debug\net5.0\SolarCoffee.Data.pdb
+C:\Users\6190665\source\repos\SolarCoffee\SolarCoffee.Services\SolarCoffee.Services\obj\Debug\net5.0\SolarCoffee.Services.csproj.CopyComplete

@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\SolarCoffee.Data\SolarCoffee.Data\SolarCoffee.Data.csproj" />
+  </ItemGroup>
+
 </Project>

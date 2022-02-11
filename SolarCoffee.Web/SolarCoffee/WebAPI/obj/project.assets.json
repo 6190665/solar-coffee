@@ -1901,6 +1901,19 @@
         "runtime": {
           "bin/placeholder/SolarCoffee.Data.dll": {}
         }
+      },
+      "SolarCoffee.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "SolarCoffee.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SolarCoffee.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SolarCoffee.Services.dll": {}
+        }
       }
     }
   },
@@ -6470,12 +6483,18 @@
       "type": "project",
       "path": "../../../SolarCoffee.Data/SolarCoffee.Data/SolarCoffee.Data.csproj",
       "msbuildProject": "../../../SolarCoffee.Data/SolarCoffee.Data/SolarCoffee.Data.csproj"
+    },
+    "SolarCoffee.Services/1.0.0": {
+      "type": "project",
+      "path": "../../../SolarCoffee.Services/SolarCoffee.Services/SolarCoffee.Services.csproj",
+      "msbuildProject": "../../../SolarCoffee.Services/SolarCoffee.Services/SolarCoffee.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.EntityFrameworkCore.Design >= 5.0.14",
       "SolarCoffee.Data >= 1.0.0",
+      "SolarCoffee.Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -6516,6 +6535,9 @@
           "projectReferences": {
             "C:\\Users\\6190665\\source\\repos\\SolarCoffee\\SolarCoffee.Data\\SolarCoffee.Data\\SolarCoffee.Data.csproj": {
               "projectPath": "C:\\Users\\6190665\\source\\repos\\SolarCoffee\\SolarCoffee.Data\\SolarCoffee.Data\\SolarCoffee.Data.csproj"
+            },
+            "C:\\Users\\6190665\\source\\repos\\SolarCoffee\\SolarCoffee.Services\\SolarCoffee.Services\\SolarCoffee.Services.csproj": {
+              "projectPath": "C:\\Users\\6190665\\source\\repos\\SolarCoffee\\SolarCoffee.Services\\SolarCoffee.Services\\SolarCoffee.Services.csproj"
             }
           }
         }
