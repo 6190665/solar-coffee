@@ -22,7 +22,8 @@ namespace SolarCoffee.Services.Product
 
         Data.Models.Product IProductService.GetProductById(int id)
         {
-            return _db.Products.Where(p => p.Id == id).FirstOrDefault();
+            var pro=_db.Products.Where(p => p.Id == id).FirstOrDefault();
+            return pro;
         }
 
         ServiceResponse<Data.Models.Product> IProductService.CreateProduct(Data.Models.Product product)
