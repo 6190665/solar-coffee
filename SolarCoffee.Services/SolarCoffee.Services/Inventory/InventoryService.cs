@@ -18,9 +18,20 @@ namespace SolarCoffee.Services.Inventory
             _db = db;
             _logger = logger;
         }
-        public void CreateSnapshot()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inventory"></param>
+        private void CreateSnapshot(ProductInventory inventory)
         {
-            throw new NotImplementedException();
+            var now = DateTime.UtcNow;
+            var snapshop = new ProductInventorySnapshot
+            {
+                SnapshotTime = now,
+                Product = inventory.Product,
+                QuantityOnHand = inventory.QuantityOnHand
+            };
+            _db.ProductInventorySnapshots.Add(snapshop);
         }
         /// <summary>
         /// Returns all current inventory from the database
@@ -33,15 +44,28 @@ namespace SolarCoffee.Services.Inventory
                 .Where(pi =>!pi.Product.IsArchived)
                 .ToList();
         }
-     
-        public ProductInventory GetProductId(int productId)
+     /// <summary>
+     /// Get a ProductInventory instance by Product Id
+     /// </summary>
+     /// <param name="productId"></param>
+     /// <returns></returns>
+        public ProductInventory GetByProductId(int productId)
         {
-            return _db.ProductInventories.Find(productId);
+            return _db.ProductInventories
+                     .Include(pi => pi.Product)
+                     .FirstOrDefault(pi =>pi.Product.Id == productId);
         }
-
+        /// <summary>
+        /// Return Snapshot history for the previous 6 hours        /// </summary>
+        /// <returns></returns>
         public List<ProductInventorySnapshot> GetSnapShotHistory()
         {
-            throw new NotImplementedException();
+            var earliest = DateTime.UtcNow -TimeSpan.FromHours(6) ;
+            return _db.ProductInventorySnapshots
+                .Include(snap => snap.Product)
+                .Where(snap =>snap.SnapshotTime>earliest
+                                    &&!snap.Product.IsArchived)
+                .ToList();
         }
         /// <summary>
         /// Updates number of units available of the provided product id 
@@ -60,7 +84,7 @@ namespace SolarCoffee.Services.Inventory
                 inventory.QuantityOnHand += adjustment;
                 try
                 {
-                    CreateSnapshot();
+                    CreateSnapshot(inventory);
                 }
                 catch (Exception e) {
                     _logger.LogError("Error creating inventory Snapshot.");

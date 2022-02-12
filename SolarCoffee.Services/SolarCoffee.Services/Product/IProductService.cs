@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SolarCoffee.Data;
 
 namespace SolarCoffee.Services.Product
-
 {
     public interface IProductService
     {
