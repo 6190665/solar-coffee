@@ -1,4 +1,5 @@
 ﻿using SolarCoffee.Data;
+using SolarCoffee.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,17 @@ namespace SolarCoffee.Services.Product
         {
             _db = solarDbContext;
         }
-        public ServiceResponse<Data.Models.Product> ArchiveProduct(int id)
+        public ServiceResponse<ProductData> ArchiveProduct(int id)
         {
             var product = _db.Products.Where(p => p.Id == id).FirstOrDefault();
             try
             {
+               
                 product.IsArchived = true;
-                _db.Add(product);
+                
+                _db.Products.Update(product);
                 _db.SaveChanges();
-                return new ServiceResponse<Data.Models.Product>
+                return new ServiceResponse<Data.Models.ProductData>
                 {
                     Data = product,
                     Message = "Archived Product!",
@@ -32,7 +35,7 @@ namespace SolarCoffee.Services.Product
             }
             catch (Exception e)
             {
-                return new ServiceResponse<Data.Models.Product>
+                return new ServiceResponse<Data.Models.ProductData>
                 {
                     Data = product,
                     Message = e.StackTrace,
@@ -42,12 +45,12 @@ namespace SolarCoffee.Services.Product
             }
         }
 
-        public ServiceResponse<Data.Models.Product> CreateProduct(Data.Models.Product product)
+        public ServiceResponse<Data.Models.ProductData> CreateProduct(Data.Models.ProductData product)
         {
             try
             {
                 _db.Products.Add(product);
-                _db.ProductInventories.Add(new Data.Models.ProductInventory
+                _db.ProductInventories.Add(new Data.Models.ProductInventoryData
                 {
                     Product = product,
                     QuantityOnHand = 0,
@@ -55,7 +58,7 @@ namespace SolarCoffee.Services.Product
 
                 });
                 _db.SaveChanges();
-                return new ServiceResponse<Data.Models.Product>
+                return new ServiceResponse<Data.Models.ProductData>
                 {
                     Data = product,
                     Message = "Product was added successfully!",
@@ -65,7 +68,7 @@ namespace SolarCoffee.Services.Product
             }
             catch (Exception e)
             {
-                return new ServiceResponse<Data.Models.Product>
+                return new ServiceResponse<Data.Models.ProductData>
                 {
                     Data = product,
                     Message = $"{e}Error Saving changes",
@@ -77,12 +80,12 @@ namespace SolarCoffee.Services.Product
 
         }
 
-        public List<Data.Models.Product> GetAllProducts()
+        public List<Data.Models.ProductData> GetAllProducts()
         {
             return _db.Products.ToList();
         }
 
-        public Data.Models.Product GetProductById(int id)
+        public Data.Models.ProductData GetProductById(int id)
         {
             return _db.Products.Where(p => p.Id == id).FirstOrDefault();
         }

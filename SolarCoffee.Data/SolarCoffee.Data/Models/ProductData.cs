@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SolarCoffee.Data.Models
 {
-    public class Product
+    public class ProductData
     {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }

@@ -16,9 +16,9 @@ namespace SolarCoffee.Services.Order
     {
         private readonly ILogger<IOrderService> _logger;
         private readonly SolarDbContext _db;
-        private readonly InventoryService _inventoryService;
-        private readonly ProductService _productService;
-        public OrderService(ILogger<IOrderService> logger, InventoryService inventoryService, ProductService productService, SolarDbContext db)
+        private readonly IInventoryService _inventoryService;
+        private readonly IProductService _productService;
+        public OrderService(ILogger<IOrderService> logger, IInventoryService inventoryService, IProductService productService, SolarDbContext db)
         {
             _logger = logger;
             _db = db;
@@ -30,9 +30,9 @@ namespace SolarCoffee.Services.Order
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        public ServiceResponse<bool> GenerateInvoiceForOrder(SalesOrder order)
+        public ServiceResponse<bool> GenerateInvoiceForOrder(SalesOrderData order)
         {
-            foreach(var item in order.SalesOrderItem)
+            foreach(var item in order.SalesOrderItems)
             {
                 item.Product = _productService.GetProductById(item.Product.Id);
                 var inventoryId = _inventoryService.GetByProductId(item.Product.Id).Id;
@@ -69,12 +69,12 @@ namespace SolarCoffee.Services.Order
         /// Gets all SalesOrders in the system
         /// </summary>
         /// <returns></returns>
-        public List<SalesOrder> GetOrders()
+        public List<SalesOrderData> GetOrders()
         {
             return _db.SalesOrders
                 .Include(so => so.Cutomer)
                     .ThenInclude(customer =>customer.PrimaryAddress)
-                .Include(so => so.SalesOrderItem)
+                .Include(so => so.SalesOrderItems)
                     .ThenInclude(item =>item.Product)
                 .ToList();
         }

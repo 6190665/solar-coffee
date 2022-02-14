@@ -1,4 +1,6 @@
-﻿using SolarCoffee.Data.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using SolarCoffee.Data.Models;
+using SolarCoffee.WebAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,8 @@ namespace SolarCoffee.WebAPI.Serialization
         /// </summary>
         /// <param name="customer"></param>
         /// <returns></returns>
-        public static CustomerModel SerializeCustomerModel(Data.Models.Customer customer) {
-
+        public static CustomerModel SerializeCustomerModel(CustomerData customer) {
+          
            return(new CustomerModel
            {
                 Id =customer.Id,
@@ -22,7 +24,7 @@ namespace SolarCoffee.WebAPI.Serialization
                FirstName = customer.FirstName,
                LastName = customer.LastName,
                UpdatedOn=customer.UpdatedOn,
-               //PrimaryAddress =customer.PrimaryAddress,
+               PrimaryAddress = SerializeCustomerAddress(customer.PrimaryAddress)
               
            });
           
@@ -32,20 +34,54 @@ namespace SolarCoffee.WebAPI.Serialization
         /// </summary>
         /// <param name="Customer"></param>
         /// <returns></returns>
-        public static Customer SerializeCustomerModel(Data.Models.CustomerModel customerModel)
+        public static CustomerData SerializeCustomerModel(CustomerModel customer)
         {
+           
 
-            return (new Customer
+            return (new CustomerData
             {
-                Id = customerModel.Id,
-                CreatedOn = customerModel.CreatedOn,
-                FirstName = customerModel.FirstName,
-                LastName = customerModel.LastName,
-                UpdatedOn = customerModel.UpdatedOn,
-                //PrimaryAddress = customerModel.PrimaryAddress,
+                Id = customer.Id,
+                CreatedOn = customer.CreatedOn,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                UpdatedOn = customer.UpdatedOn,
+                PrimaryAddress = SerializeCustomerAddress(customer.PrimaryAddress),
 
             });
 
         }
+        public static CustomerAddressData SerializeCustomerAddress(CustomerAddressModel customerAddress)
+        {
+            return new CustomerAddressData
+            {
+                Id = customerAddress.Id,
+                AddressLine1 = customerAddress.AddressLine1,
+                AddressLine2 = customerAddress.AddressLine2,
+                City = customerAddress.City,
+                State = customerAddress.State,
+                Country = customerAddress.Country,
+                PostalCode = customerAddress.PostalCode,
+                CreatedOn = customerAddress.CreatedOn,
+                UpdatedOn = customerAddress.UpdatedOn,
+            };
+
+        } 
+        public static CustomerAddressModel SerializeCustomerAddress(CustomerAddressData customerAddress)
+        {
+            return new CustomerAddressModel
+            {
+                Id = customerAddress.Id,
+                AddressLine1 = customerAddress.AddressLine1,
+                AddressLine2 = customerAddress.AddressLine2,
+                City = customerAddress.City,
+                State = customerAddress.State,
+                Country = customerAddress.Country,
+                PostalCode = customerAddress.PostalCode,
+                CreatedOn = customerAddress.CreatedOn,
+                UpdatedOn = customerAddress.UpdatedOn,
+            };
+
+        }
+        
     }
 }

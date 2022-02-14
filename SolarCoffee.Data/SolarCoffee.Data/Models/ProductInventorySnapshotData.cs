@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SolarCoffee.Data.Models
 {
-    public class SalesOrderItem
+    public class ProductInventorySnapshotData
     {
         public int Id { get; set; }
-       
-        public int Quantity { get; set; }
-        public ProductModel Product { get; set; }
+        public DateTime SnapshotTime { get; set; }
+        public int  QuantityOnHand { get; set; }
+        public ProductData Product { get; set; }
     }
 }

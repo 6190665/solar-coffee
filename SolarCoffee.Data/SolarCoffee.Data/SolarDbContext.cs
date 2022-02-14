@@ -14,13 +14,13 @@ namespace SolarCoffee.Data
         public SolarDbContext(DbContextOptions options):base(options)
         { }
 
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<CustomerAddress> CustomersAddresses { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductInventory> ProductInventories { get; set; }
-        public virtual DbSet<ProductInventorySnapshot> ProductInventorySnapshots { get; set; }
-        public virtual DbSet<SalesOrder> SalesOrders { get; set; }
-        public virtual DbSet<SalesOrderItem> SalesOrderItems { get; set; }
+        public virtual DbSet<CustomerData> Customers { get; set; }
+        public virtual DbSet<CustomerAddressData> CustomersAddresses { get; set; }
+        public virtual DbSet<ProductData> Products { get; set; }
+        public virtual DbSet<ProductInventoryData> ProductInventories { get; set; }
+        public virtual DbSet<ProductInventorySnapshotData> ProductInventorySnapshots { get; set; }
+        public virtual DbSet<SalesOrderData> SalesOrders { get; set; }
+        public virtual DbSet<SalesOrderItemData> SalesOrderItems { get; set; }
 
     }
 }

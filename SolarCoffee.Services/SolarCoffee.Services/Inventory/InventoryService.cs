@@ -22,10 +22,10 @@ namespace SolarCoffee.Services.Inventory
         /// 
         /// </summary>
         /// <param name="inventory"></param>
-        private void CreateSnapshot(ProductInventory inventory)
+        private void CreateSnapshot(ProductInventoryData inventory)
         {
             var now = DateTime.UtcNow;
-            var snapshop = new ProductInventorySnapshot
+            var snapshop = new ProductInventorySnapshotData
             {
                 SnapshotTime = now,
                 Product = inventory.Product,
@@ -37,7 +37,7 @@ namespace SolarCoffee.Services.Inventory
         /// Returns all current inventory from the database
         /// </summary>
         /// <returns></returns>
-        public List<ProductInventory> GetCurrentInventory()
+        public List<ProductInventoryData> GetCurrentInventory()
         {
             return _db.ProductInventories
                 .Include(pi =>pi.Product)
@@ -49,7 +49,7 @@ namespace SolarCoffee.Services.Inventory
      /// </summary>
      /// <param name="productId"></param>
      /// <returns></returns>
-        public ProductInventory GetByProductId(int productId)
+        public ProductInventoryData GetByProductId(int productId)
         {
             return _db.ProductInventories
                      .Include(pi => pi.Product)
@@ -58,7 +58,7 @@ namespace SolarCoffee.Services.Inventory
         /// <summary>
         /// Return Snapshot history for the previous 6 hours        /// </summary>
         /// <returns></returns>
-        public List<ProductInventorySnapshot> GetSnapShotHistory()
+        public List<ProductInventorySnapshotData> GetSnapShotHistory()
         {
             var earliest = DateTime.UtcNow -TimeSpan.FromHours(6) ;
             return _db.ProductInventorySnapshots
@@ -74,7 +74,7 @@ namespace SolarCoffee.Services.Inventory
         /// <param name="id">productId</param>
         /// <param name="adjustment">number of units added/removed from inventory</param>
         /// <returns></returns>
-        public ServiceResponse<ProductInventory> UpdateUnitsAvailable(int id, int adjustment)
+        public ServiceResponse<ProductInventoryData> UpdateUnitsAvailable(int id, int adjustment)
         {
             try
             {
@@ -87,10 +87,10 @@ namespace SolarCoffee.Services.Inventory
                     CreateSnapshot(inventory);
                 }
                 catch (Exception e) {
-                    _logger.LogError("Error creating inventory Snapshot.");
+                    _logger.LogError($"Error creating inventory Snapshot.{e.StackTrace}");
                 }
                 _db.SaveChanges();
-                return new ServiceResponse<ProductInventory>
+                return new ServiceResponse<ProductInventoryData>
                 {
                     IsSuccess = true,
                     Data = inventory,
@@ -100,7 +100,7 @@ namespace SolarCoffee.Services.Inventory
             }
             catch (Exception e)
             {
-                return new ServiceResponse<ProductInventory>
+                return new ServiceResponse<ProductInventoryData>
                 {
                     IsSuccess = false,
                     Data = null,

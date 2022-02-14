@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using SolarCoffee.Data.Models;
 using SolarCoffee.Services.Customer;
 using SolarCoffee.WebAPI.Serialization;
+using SolarCoffee.WebAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace SolarCoffee.WebAPI.Controllers
     {
         private readonly ILogger<CustomerController> _logger;
         private readonly ICustomerService _customerService;
+        
         public CustomerController(ILogger<CustomerController> logger, ICustomerService customerService)
         {
             _logger = logger;
@@ -58,6 +60,28 @@ namespace SolarCoffee.WebAPI.Controllers
             return Ok(customerViews);
         }
 
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(201)]
+        [HttpPost("/api/customer")]
+        public ActionResult createCustomer([FromBody] CustomerModel customer)
+        {
+            _logger.LogInformation("Creating a new Customer");
+            customer.CreatedOn = DateTime.UtcNow;
+            customer.UpdatedOn = DateTime.UtcNow;
+            var customerData = CustomerMapper.SerializeCustomerModel(customer);
+            var newCustomer = _customerService.CreateCustomer(customerData);
+           
+            return Ok(newCustomer);
+        }
+        [HttpDelete("/customer/{id}")]
+        public ActionResult DeleteCustomer(int id)
+        {
+            _logger.LogInformation("Deleting a customer");
+            var response = _customerService.DeleteCustomer(id);
+            return Ok(response);
+
+        }
 
     }
 }

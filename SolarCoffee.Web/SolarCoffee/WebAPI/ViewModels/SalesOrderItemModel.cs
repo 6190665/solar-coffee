@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolarCoffee.Data.Models
+namespace SolarCoffee.WebAPI.ViewModels
 {
-    public class SalesOrderItem
+    public class SalesOrderItemModel
     {
         public int Id { get; set; }
        
         public int Quantity { get; set; }
-        public Product Product { get; set; }
+        public ProductModel Product { get; set; }
     }
 }

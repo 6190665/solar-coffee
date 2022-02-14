@@ -1,4 +1,5 @@
 ﻿using SolarCoffee.Data.Models;
+using SolarCoffee.WebAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace SolarCoffee.WebAPI.Serialization
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public static ProductModel SerializeProductModel(Data.Models.Product product) {
+        public static ProductModel SerializeProductModel(Data.Models.ProductData product) {
 
            var p = (new ProductModel
            {
@@ -33,10 +34,10 @@ namespace SolarCoffee.WebAPI.Serialization
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public static Data.Models.Product SerializeProductModel(ProductModel product)
+        public static Data.Models.ProductData SerializeProductModel(ProductModel product)
         {
 
-            return new Product
+            return new ProductData
             {
                 Id = product.Id,
                 CreatedOn = product.CreatedOn,

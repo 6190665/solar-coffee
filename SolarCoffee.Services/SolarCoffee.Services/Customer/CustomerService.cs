@@ -19,7 +19,7 @@ namespace SolarCoffee.Services.Customer
         /// Returns a list of customers from the database
         /// </summary>
         /// <returns>List<Customer></returns>
-        List<Data.Models.Customer> ICustomerService.GetAllCustomers()
+        List<Data.Models.CustomerData> ICustomerService.GetAllCustomers()
         {
             return _db.Customers
                 .Include(customer => customer.PrimaryAddress)
@@ -33,16 +33,17 @@ namespace SolarCoffee.Services.Customer
         /// <param name="id">int customer primary key</param>
         /// <returns>ServiceResponse<bool></returns>
 
-        Data.Models.Customer ICustomerService.GetCustomerById(int id)
+        Data.Models.CustomerData ICustomerService.GetCustomerById(int id)
         {
             var cus=_db.Customers.Where(p => p.Id == id).Include(p=>p.PrimaryAddress).FirstOrDefault();
             return cus;
         }
 
-        ServiceResponse<Data.Models.Customer> ICustomerService.CreateCustomer(Data.Models.Customer customer)
+        ServiceResponse<Data.Models.CustomerData> ICustomerService.CreateCustomer(Data.Models.CustomerData customer)
         {
             try
             {
+                _db.CustomersAddresses.Add(customer.PrimaryAddress);
                 _db.Customers.Add(customer);
                 //_db.ProductInventories.Add(new Data.Models.ProductInventory{
                 //    customer = customer,
@@ -51,7 +52,7 @@ namespace SolarCoffee.Services.Customer
 
                 //});
                 _db.SaveChanges();
-                return new ServiceResponse<Data.Models.Customer>
+                return new ServiceResponse<Data.Models.CustomerData>
                 {
                     Data = customer,
                     Message = "New Customer was added successfully!",
@@ -61,7 +62,7 @@ namespace SolarCoffee.Services.Customer
             }
             catch (Exception e)
             {
-                return new ServiceResponse<Data.Models.Customer>
+                return new ServiceResponse<Data.Models.CustomerData>
                 {
                     Data = customer,
                     Message = e.StackTrace,
